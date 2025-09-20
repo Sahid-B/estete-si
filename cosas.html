@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramo para Saura 💛</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Georgia', serif;
+    }
+    
+    .sky {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 20%, #1a1a2e 0%, #16213e 50%, #000 100%);
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .shooting-star {
+      position: absolute;
+      width: 3px;
+      height: 120px;
+      background: linear-gradient(to bottom, #fff 0%, #ffeb3b 30%, transparent 100%);
+      border-radius: 50%;
+      animation: shooting 4s linear infinite;
+      box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
+    }
+    
+    @keyframes shooting {
+      0% { transform: translateX(0) translateY(-200px) rotate(45deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateX(-1000px) translateY(800px) rotate(45deg); opacity: 0; }
+    }
+    
+    .bouquet-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 300px;
+      height: 500px;
+    }
+    
+    .tulip {
+      position: absolute;
+      bottom: 80px;
+      opacity: 0;
+      transform: translateY(100px) scale(0.5);
+      animation: growTulip 2s ease-out forwards;
+    }
+    
+    @keyframes growTulip {
+      0% { opacity: 0; transform: translateY(100px) scale(0.5); }
+      50% { opacity: 0.8; transform: translateY(20px) scale(0.8); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    .tulip-stem {
+      width: 6px;
+      height: 180px;
+      background: linear-gradient(to bottom, #4a7c59 0%, #2d5016 100%);
+      border-radius: 3px;
+      position: relative;
+    }
+    
+    .tulip-leaf {
+      position: absolute;
+      width: 8px;
+      height: 40px;
+      background: linear-gradient(to bottom, #4a7c59 0%, #2d5016 100%);
+      border-radius: 4px 0 4px 0;
+      transform-origin: bottom;
+    }
+    
+    .leaf-1 { bottom: 60px; left: -8px; transform: rotate(-15deg); }
+    .leaf-2 { bottom: 90px; right: -8px; transform: rotate(15deg); }
+    
+    .tulip-flower {
+      position: absolute;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35px;
+      height: 45px;
+    }
+    
+    .tulip-petal {
+      position: absolute;
+      width: 20px;
+      height: 35px;
+      background: linear-gradient(to bottom, #ffd700 0%, #ffb300 50%, #ff8f00 100%);
+      border-radius: 50% 50% 20% 20%;
+      box-shadow: inset 2px 2px 8px rgba(255,255,255,0.3),
+                  0 0 15px rgba(255,215,0,0.6),
+                  0 0 30px rgba(255,215,0,0.3);
+    }
+    
+    .petal-1 { left: 7px; top: 0; transform: rotate(-10deg); z-index: 3; }
+    .petal-2 { left: -2px; top: 3px; transform: rotate(-30deg); z-index: 1; }
+    .petal-3 { right: -2px; top: 3px; transform: rotate(30deg); z-index: 1; }
+    .petal-4 { left: 2px; top: 8px; transform: rotate(-50deg); z-index: 0; }
+    .petal-5 { right: 2px; top: 8px; transform: rotate(50deg); z-index: 0; }
+    .petal-6 { left: 7px; top: 5px; transform: rotate(10deg); z-index: 2; }
+    
+    .tulip-center {
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, #2d5016 30%, #4a7c59 100%);
+      border-radius: 50%;
+    }
+    
+    .bouquet-wrapper {
+      position: absolute;
+      bottom: 0px;
+      left: 40%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 160px;
+      background: linear-gradient(135deg, #ffb3d9 0%, #ff99cc 30%, #ff80bf 70%, #ff66b3 100%);
+      border-radius: 50% 50% 20% 20%;
+      z-index: 5;
+      opacity: 0;
+      animation: wrapperAppear 1s ease-out 4.5s forwards;
+      box-shadow: 0 0 20px rgba(255, 102, 179, 0.4),
+                  inset 0 10px 20px rgba(255, 255, 255, 0.2),
+                  inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    @keyframes wrapperAppear { to { opacity: 1; } }
+    
+    .bouquet-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      right: 10px;
+      height: 30px;
+      background: linear-gradient(135deg, #ffb3d9 0%, #ff99cc 50%, #ff80bf 100%);
+      border-radius: 50px 50px 0 0;
+      box-shadow: inset 0 5px 10px rgba(255, 255, 255, 0.3);
+    }
+    
+    .bouquet-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      right: 20px;
+      height: 20px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+      border-radius: 10px;
+    }
+    
+    .ribbon-wrapper {
+      position: absolute;
+      bottom: 30px;
+      left: 40%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 50px;
+      z-index: 10;
+      opacity: 0;
+      animation: ribbonAppear 1s ease-out 5s forwards;
+    }
+    
+    @keyframes ribbonAppear { to { opacity: 1; } }
+    
+    .ribbon-base {
+      width: 100%;
+      height: 25px;
+      background: linear-gradient(135deg, #ff80bf 0%, #ff4d94 50%, #e6005c 100%);
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(230, 0, 92, 0.4),
+                  inset 0 3px 8px rgba(255, 255, 255, 0.3),
+                  inset 0 -3px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .ribbon-tail {
+      position: absolute;
+      width: 35px;
+      height: 45px;
+      background: linear-gradient(135deg, #ff80bf 0%, #ff4d94 50%, #e6005c 100%);
+      top: 25px;
+      box-shadow: 0 2px 8px rgba(230, 0, 92, 0.3);
+    }
+    
+    .ribbon-tail.left {
+      left: 25px;
+      clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+      transform: rotate(-8deg);
+    }
+    
+    .ribbon-tail.right {
+      right: 25px;
+      clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+      transform: rotate(8deg);
+    }
+    
+    .message {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: #ffd700;
+      text-shadow: 0 0 10px rgba(255,215,0,0.8);
+      opacity: 0;
+      animation: fadeInMessage 3s ease-in 6s forwards;
+    }
+    
+    @keyframes fadeInMessage { to { opacity: 1; } }
+    
+    .message h1 {
+      font-size: 2.5em;
+      margin: 0;
+      font-weight: bold;
+    }
+    
+    .message p {
+      font-size: 1.2em;
+      margin: 10px 0;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="sky">
+    <div class="shooting-star" style="left: 90%; animation-delay: 1s;"></div>
+    <div class="shooting-star" style="left: 70%; animation-delay: 2.5s;"></div>
+    <div class="shooting-star" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="shooting-star" style="left: 30%; animation-delay: 5.5s;"></div>
+    <div class="shooting-star" style="left: 10%; animation-delay: 7s;"></div>
+    <div class="shooting-star" style="left: 85%; animation-delay: 8.5s;"></div>
+  </div>
+
+  <div class="message">
+    <h1>Para Saura 💛</h1>
+    <p>Con todo mi amor</p>
+  </div>
+
+  <div class="bouquet-container">
+    <div class="tulip" style="left: 50px; animation-delay: 0.5s; transform: translateY(100px) scale(0.5) rotate(-8deg);">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="tulip" style="left: 80px; animation-delay: 1s; transform: translateY(100px) scale(0.5) rotate(-4deg);">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="tulip" style="left: 110px; animation-delay: 1.5s; transform: translateY(100px) scale(0.5);">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="tulip" style="left: 140px; animation-delay: 2s; transform: translateY(100px) scale(0.5) rotate(4deg);">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="tulip" style="left: 170px; animation-delay: 2.5s; transform: translateY(100px) scale(0.5) rotate(8deg);">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="tulip" style="left: 70px; animation-delay: 3s; transform: translateY(100px) scale(0.5) rotate(-12deg); z-index: -1;">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="tulip" style="left: 150px; animation-delay: 3.5s; transform: translateY(100px) scale(0.5) rotate(12deg); z-index: -1;">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="tulip" style="left: 110px; animation-delay: 4s; transform: translateY(100px) scale(0.5) rotate(-2deg); z-index: -2;">
+      <div class="tulip-stem">
+        <div class="tulip-leaf leaf-1"></div>
+        <div class="tulip-leaf leaf-2"></div>
+      </div>
+      <div class="tulip-flower">
+        <div class="tulip-petal petal-1"></div>
+        <div class="tulip-petal petal-2"></div>
+        <div class="tulip-petal petal-3"></div>
+        <div class="tulip-petal petal-4"></div>
+        <div class="tulip-petal petal-5"></div>
+        <div class="tulip-petal petal-6"></div>
+        <div class="tulip-center"></div>
+      </div>
+    </div>
+
+    <div class="bouquet-wrapper"></div>
+
+    <div class="ribbon-wrapper">
+      <div class="ribbon-base"></div>
+      <div class="ribbon-tail left"></div>
+      <div class="ribbon-tail right"></div>
+    </div>
+  </div>
+</body>
+</html>
